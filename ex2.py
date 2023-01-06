@@ -13,51 +13,20 @@ class Date:
 
     
     def __repr__(self):
-
         return str (self.jour)+" "+str (self.mois)+" "+str (self.annee)
 
-    def __it__(self,date):
-        if(self.annee==date.annee):
-            if(self.mois==date.mois):
-                if(self.jour<date.jour):
-                    print(self.__repr__()," < ",date.__repr__())
-                elif(self.jour>date.jour):
-                    print(self.__repr__()," > ",date.__repr__())
-                else:
-                    print("les deux dates sont identiques")
-            elif(self.mois<date.mois):
-                    print(self.__repr__()," < ",date.__repr__())
-            else:
-                    print(self.__repr__()," > ",date.__repr__())
-        elif(self.annee<date.annee):
-                    print(self.__repr__()," < ",date.__repr__())
-        else:
-                    print(self.__repr__()," > ",date.__repr__())
+    def __lt__(self,d):
+        if(self.annee<d.annee):
+            return True
+        elif(self.annee==d.annee):
+            if(self.mois<d.mois):
+                return True
+            elif(self.mois==d.mois):
+                if(self.jour<d.jour):
+                    return True
+        return False
 
-    def __expression__(self,date):
-        if(self.annee==date.annee):
-            if(self.mois==date.mois):
-                if(self.jour<date.jour):
-                    print(self.__repr__()," < ",date.__repr__()," True")
-                elif(self.jour>date.jour):
-                    print(self.__repr__()," < ",date.__repr__()," False")
-                else:
-                    print(self.__repr__()," < ",date.__repr__()," False")
-            elif(self.mois<date.mois):
-                    print(self.__repr__()," < ",date.__repr__()," True")
-            else:
-                    print(self.__repr__()," < ",date.__repr__()," False")
-        elif(self.annee<date.annee):
-                    print(self.__repr__()," < ",date.__repr__()," True")
-        else:
-                    print(self.__repr__()," < ",date.__repr__()," False")
-
-     
-
-
-date1=Date(31,7,2001)
-date2=Date(1,1,2023)
-
-print("date 1 = ",date1.__repr__())
-date1.__it__(date2)
-date1.__expression__(date2)
+d1=Date(25,1,2002)
+d2=Date(10,1,2002)
+print(d1)
+print(d1<d2)
